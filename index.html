@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Our Friendship Story</title>
+
+<style>
+
+body{
+margin:0;
+background:black;
+color:white;
+font-family:Arial, sans-serif;
+text-align:center;
+}
+
+section{
+padding:80px 20px;
+max-width:900px;
+margin:auto;
+}
+
+h1{
+color:red;
+}
+
+img{
+width:70%;
+max-width:500px;
+border-radius:12px;
+margin:20px 0;
+}
+
+button{
+background:red;
+color:white;
+border:none;
+padding:12px 25px;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+margin:8px;
+}
+
+.memory{
+background:#111;
+padding:15px;
+margin:10px;
+border-radius:8px;
+}
+
+.letter{
+text-align:left;
+line-height:1.8;
+font-size:18px;
+max-width:800px;
+margin:auto;
+}
+
+</style>
+
+<script>
+
+function startStory(){
+document.getElementById("story").scrollIntoView({behavior:"smooth"});
+}
+
+function randomMessage(){
+
+let messages=[
+"You always listened to me patiently.",
+"You believed in my dreams.",
+"You never judged me.",
+"I am lucky to have a friend like you.",
+"You always supported me.",
+"Our friendship means a lot to me."
+];
+
+let random=messages[Math.floor(Math.random()*messages.length)];
+
+document.getElementById("randomText").innerHTML=random;
+
+}
+
+function checkQuiz(answer,correct){
+
+if(answer===correct){
+alert("Correct! You remember our memories.");
+}else{
+alert("Wrong answer 😄 but our friendship is still strong.");
+}
+
+}
+
+function pauseMusic(){
+document.getElementById("bgmusic").pause();
+}
+
+</script>
+
+</head>
+
+<body>
+
+<audio id="bgmusic" autoplay loop>
+<source src="thousand-years.mp3" type="audio/mpeg">
+</audio>
+
+<section>
+
+<h1>A Small Surprise For You</h1>
+
+<p>This website is made for someone very special in my life.</p>
+
+<p>Our friendship is full of memories, support, and dreams.</p>
+
+<button onclick="startStory()">Start Our Story</button>
+
+<br><br>
+
+<button onclick="pauseMusic()">Pause Music</button>
+
+</section>
+
+<section id="story">
+
+<h1>The Beginning</h1>
+
+<p>Every friendship starts with a simple moment.</p>
+
+<p>That moment slowly became a beautiful story.</p>
+
+</section>
+
+<section>
+
+<h1>Our Memories</h1>
+
+<img src="images/image1.png">
+<p>The day our friendship began.</p>
+
+<img src="images/image2.png">
+<p>Talking together.</p>
+
+<img src="images/image3.png">
+<p>Sharing stories and laughter.</p>
+
+<img src="images/image4.png">
+<p>Lunch together.</p>
+
+<img src="images/image5.png">
+<p>Eating panipuri together.</p>
+
+<img src="images/image6.png">
+<p>Talking about dramas.</p>
+
+<img src="images/image7.png">
+<p>Singing songs and laughing.</p>
+
+<img src="images/image8.png">
+<p>Funny memories.</p>
+
+<img src="images/image9.png">
+<p>You always listened.</p>
+
+<img src="images/image10.png">
+<p>Talking about dreams.</p>
+
+<img src="images/image11.png">
+<p>Supporting each other.</p>
+
+<img src="images/image12.png">
+<p>Working hard for our goals.</p>
+
+<img src="images/image13.png">
+<p>Peaceful days.</p>
+
+<img src="images/image14.png">
+<p>Rainy memories.</p>
+
+<img src="images/image15.png">
+<p>Even when busy.</p>
+
+<img src="images/image16.png">
+<p>Our friendship stayed strong.</p>
+
+<img src="images/image17.png">
+<p>Dreaming about the future.</p>
+
+<img src="images/image18.png">
+<p>Years passed.</p>
+
+<img src="images/image19.png">
+<p>Still thankful.</p>
+
+<img src="images/image20.png">
+<p>Our story continues.</p>
+
+</section>
+
+<section>
+
+<h1>Memory Book</h1>
+
+<div class="memory">Eating panipuri together.</div>
+<div class="memory">Talking about drama stories.</div>
+<div class="memory">Singing songs and laughing.</div>
+<div class="memory">Sharing lunch together.</div>
+
+</section>
+
+<section>
+
+<h1>Dreams</h1>
+
+<p><b>Your Dreams</b></p>
+
+<p>Travel to Tawang</p>
+<p>Travel to Finland</p>
+<p>Make your parents proud</p>
+
+<br>
+
+<p><b>My Dreams</b></p>
+
+<p>Study in South Korea</p>
+<p>Achieve my goals</p>
+
+<p>Even if our dreams are different, we support each other.</p>
+
+</section>
+
+<section>
+
+<h1>About You</h1>
+
+<p>You are calm, kind, supportive, and someone who never judges others.</p>
+
+<p>You listen patiently and always encourage people.</p>
+
+<p>This song reminds me of how special you are.</p>
+
+<iframe width="420" height="236"
+src="https://www.youtube.com/embed/QJO3ROT-A4E"
+title="What Makes You Beautiful"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+</section>
+
+<section>
+
+<h1>Friendship Quiz</h1>
+
+<p>1. What food did we eat together?</p>
+
+<button onclick="checkQuiz('panipuri','panipuri')">Panipuri</button>
+<button onclick="checkQuiz('pizza','panipuri')">Pizza</button>
+
+<p>2. What do we talk about for hours?</p>
+
+<button onclick="checkQuiz('dramas','dramas')">Dramas</button>
+<button onclick="checkQuiz('sports','dramas')">Sports</button>
+
+<p>3. What is her favorite color?</p>
+
+<button onclick="checkQuiz('red','red')">Red</button>
+<button onclick="checkQuiz('green','red')">Green</button>
+
+<p>4. What is my favorite color?</p>
+
+<button onclick="checkQuiz('black','black')">Black</button>
+<button onclick="checkQuiz('blue','black')">Blue</button>
+
+<p>5. Where does she want to travel?</p>
+
+<button onclick="checkQuiz('finland','finland')">Finland</button>
+<button onclick="checkQuiz('france','finland')">France</button>
+
+<p>6. What is strong in our friendship?</p>
+
+<button onclick="checkQuiz('trust','trust')">Trust</button>
+<button onclick="checkQuiz('competition','trust')">Competition</button>
+
+</section>
+
+<section>
+
+<h1>Random Friendship Message</h1>
+
+<button onclick="randomMessage()">Click Here</button>
+
+<p id="randomText"></p>
+
+</section>
+
+<section>
+
+<h1>An Apology</h1>
+
+<p>
+
+Sometimes I miss important moments or become busy with life.
+
+I am really sorry for that.
+
+But I want you to know that our friendship always matters to me.
+
+</p>
+
+</section>
+
+<section>
+
+<h1>A Letter Only For You</h1>
+
+<div class="letter">
+
+<p><b>My dear best friend,</b></p>
+
+<p>Before I say anything else, I want to say something from my heart. I am truly sorry that I couldn't celebrate your birthday the way you deserved. I know your birthday has already passed, and I wish I could have been there, wished you earlier, or done something special on that day itself.</p>
+
+<p>Sometimes life becomes busy and complicated, and time moves faster than we expect. But even though the day passed, my thoughts about you never did.</p>
+
+<p>That is the reason this small website exists. It may not be a big gift, but it is something I made carefully, thinking about you and our friendship.</p>
+
+<p>Nine years is a long time. When we first became friends, we probably didn’t imagine that our friendship would last this long or become this meaningful.</p>
+
+<p>There are many people we meet in life, but only a few become part of our story. You are one of those rare people in my life.</p>
+
+<p>I still remember the small moments that made our friendship special. The simple days when we sat together, ate lunch, laughed, and talked about dramas.</p>
+
+<p>I also remember the day we went to the panipuri shop with our friends. It was just a simple evening, eating panipuri and mushroom together and enjoying the moment.</p>
+
+<p>You always listened. You always supported me. And you believed in my dreams even when others doubted them.</p>
+
+<p>You are calm, kind, supportive, and someone who never judges others.</p>
+
+<p>Even if we don’t talk every day or meet often, our friendship is still there.</p>
+
+<p>You have big dreams too — making your parents proud and traveling the world.</p>
+
+<p>I truly hope every one of those dreams becomes real for you.</p>
+
+<p><b>Happy Birthday.</b></p>
+
+<p>I hope this year brings you happiness and success.</p>
+
+<p>Thank you for being someone who listens, believes, and supports.</p>
+
+<p>And thank you for being part of my life.</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h1>Final Message</h1>
+
+<p>Thank you for being my best friend.</p>
+
+<p>Our friendship story is still continuing.</p>
+
+</section>
+
+</body>
+</html>
