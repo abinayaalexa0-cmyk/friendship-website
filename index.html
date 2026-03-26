@@ -14,97 +14,7 @@ color:white;
 font-family:Arial;
 text-align:center;
 }
-<style>
-.glow-text{
-color:red;
-font-size:30px;
-font-family:'Dancing Script', cursive;
-text-align:center;
-animation: glow 2s ease-in-out infinite alternate;
-}
 
-@keyframes glow{
-from{
-text-shadow: 0 0 10px red, 0 0 20px red;
-}
-to{
-text-shadow: 0 0 20px pink, 0 0 40px red;
-}
-
-
-/* floating hearts */
-.heart{
-position:fixed;
-color:red;
-font-size:20px;
-animation: floatUp 4s linear infinite;
-}
-
-@keyframes floatUp{
-0%{transform:translateY(100vh); opacity:1;}
-100%{transform:translateY(-10vh); opacity:0;}
-}
-</style>
-  <style>
-.glow-text{
-color:red;
-font-size:30px;
-font-family:'Dancing Script', cursive;
-text-align:center;
-animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow{
-from{
-text-shadow: 0 0 10px red, 0 0 20px red;
-}
-to{
-text-shadow: 0 0 20px pink, 0 0 40px red;
-}
-}
-
-/* floating hearts */
-.heart{
-position:fixed;
-color:red;
-font-size:20px;
-animation: floatUp 4s linear infinite;
-}
-
-@keyframes floatUp{
-0%{transform:translateY(100vh); opacity:1;}
-100%{transform:translateY(-10vh); opacity:0;}
-}
-</style>
-  <style>
-.glow-text{
-color:red;
-font-size:30px;
-font-family:'Dancing Script', cursive;
-text-align:center;
-animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow{
-from{
-text-shadow: 0 0 10px red, 0 0 20px red;
-}
-to{
-text-shadow: 0 0 20px pink, 0 0 40px red;
-}
-/* floating hearts */
-.heart{
-position:fixed;
-color:red;
-font-size:20px;
-animation: floatUp 4s linear infinite;
-}
-@keyframes floatUp{
-0%{transform:translateY(100vh); opacity:1;}
-100%{transform:translateY(-10vh); opacity:0;}
-}
-</style>
-</script>
 /* HERO */
 .hero{
 height:100vh;
@@ -134,33 +44,8 @@ margin:20px 0;
 border-radius:12px;
 box-shadow:0 0 15px red;
 }
-<section>
-<h1>One Last Question</h1>
 
-<p>Will you be my best friend forever and always? ❤️</p>
-
-<button onclick="answerYes()">Yes ❤️</button>
-<button onclick="answerNo()">No 💔</button>
-
-</section>
-/* FLIPBOOK */
-.flipbook{
-background:black;
-color:red;
-padding:30px;
-border-radius:10px;
-box-shadow:0 0 10px red;
-}
-
-.page{
-display:none;
-font-family:'Dancing Script', cursive;
-font-size:20px;
-line-height:2;
-}
-
-.page.active{display:block;}
-
+/* BUTTON */
 button{
 background:red;
 color:black;
@@ -170,37 +55,221 @@ margin:10px;
 border-radius:8px;
 cursor:pointer;
 }
+button:hover{
+transform:scale(1.1);
+}
 
-/* LETTER PAPER */
+/* FLIPBOOK */
+.flipbook{
+background:black;
+color:red;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px red;
+}
+.page{
+display:none;
+font-family:'Dancing Script', cursive;
+font-size:20px;
+line-height:2;
+}
+.page.active{display:block;}
+
+/* LETTER */
 .letter-paper{
-background: #f5e6c8;
-padding: 40px;
-border-radius: 8px;
-max-width: 700px;
-margin: 40px auto;
-
-box-shadow: 
-0 0 20px rgba(0,0,0,0.6),
+background:#f5e6c8;
+padding:40px;
+border-radius:8px;
+max-width:700px;
+margin:40px auto;
+box-shadow:0 0 20px rgba(0,0,0,0.6),
 inset 0 0 30px rgba(0,0,0,0.2);
+border:2px solid #d2b48c;
+font-family:'Cormorant Garamond', serif;
+color:#3b2f2f;
+line-height:1.9;
+font-size:20px;
+text-align:left;
+}
 
-border: 2px solid #d2b48c;
+/* GLOW */
+.glow-text{
+color:red;
+font-size:30px;
+font-family:'Dancing Script', cursive;
+animation: glow 2s infinite alternate;
+}
 
-font-family: 'Cormorant Garamond', serif;
-color: #3b2f2f;
-line-height: 1.9;
-font-size: 20px;
-text-align: left;
-}font-family: 'Great Vibes', cursive;
-font-size: 24px;
+@keyframes glow{
+from{ text-shadow:0 0 10px red; }
+to{ text-shadow:0 0 30px pink; }
+}
+
+#quizResult{color:red; font-size:20px;}
 #randomText{color:red;}
 </style>
+</head>
+
+<body>
+
+<!-- 🎵 MUSIC -->
+<audio id="music" loop>
+<source src="thousandyears.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HERO -->
+<section class="hero">
+<h1>9 Years of Friendship</h1>
+<p>Black 🖤 and Red ❤️ — always together</p>
+<button onclick="startStory()">Start</button>
+</section>
+
+<!-- STORY -->
+<section>
+<h1>Our Story</h1>
+
+<img src="images/image1.png"><p>The day our friendship began.</p>
+<img src="images/image2.png"><p>Sharing laughter.</p>
+<img src="images/image3.png"><p>Lunch together.</p>
+<img src="images/image4.png"><p>Panipuri memories.</p>
+<img src="images/image5.png"><p>Drama talks.</p>
+<img src="images/image6.png"><p>You listened.</p>
+<img src="images/image7.png"><p>Dream talks.</p>
+<img src="images/image8.png"><p>Busy days.</p>
+<img src="images/image9.png"><p>Still strong.</p>
+<img src="images/image10.png"><p>Our story continues.</p>
+
+</section>
+
+<!-- FLIPBOOK -->
+<section>
+<h1>Memories</h1>
+<div class="flipbook">
+
+<div class="page"> I still remember that simple day when we went to the panipuri shop together with our friends. It wasn’t a big event, just a normal evening, but it became a memory I will never forget.
+</div> <div class="page"> Those lunch breaks we spent together may have seemed small, but they meant a lot. Sitting together, sharing food, and laughing made everything feel lighter.
+</div> <div class="page"> We used to talk about dramas for so long. It was never boring, because it wasn’t about the topic, it was about how comfortable we were.
+</div> <div class="page"> You listened to me again and again, without judging or getting tired. That kind of support is something I will always be thankful for.
+</div> <div class="page"> When I look back, I realize something… our friendship was built on simple moments, and that is what makes it special. </div>
+
+<button onclick="prev()">Previous</button>
+<button onclick="next()">Next</button>
+
+</div>
+</section>
+
+<!-- CHILDHOOD -->
+<section>
+<h1>Little You</h1>
+<p>You were always kind… even before I knew you.</p>
+<img src="images/child1.jpg">
+<img src="images/child2.jpg">
+</section>
+
+<!-- DREAMS -->
+<section>
+<h1>Your Dreams</h1>
+<p>You will make your parents proud. I believe in you.</p>
+</section>
+
+<!-- QUIZ -->
+<section>
+<h1>Fun Quiz</h1>
+
+<p>1. What did we eat?</p>
+<button onclick="checkAnswer('panipuri')">Panipuri</button>
+<button onclick="checkAnswer('pizza')">Pizza</button>
+
+<p>2. What did we talk about?</p>
+<button onclick="checkAnswer('drama')">Dramas</button>
+<button onclick="checkAnswer('sports')">Sports</button>
+
+<p>3. What describes you?</p>
+<button onclick="checkAnswer('kind')">Kind</button>
+<button onclick="checkAnswer('angry')">Angry</button>
+
+<p>4. Favorite color?</p>
+<button onclick="checkAnswer('red')">Red</button>
+<button onclick="checkAnswer('blue')">Blue</button>
+
+<p>5. Personality?</p>
+<button onclick="checkAnswer('caring')">Caring</button>
+<button onclick="checkAnswer('selfish')">Selfish</button>
+
+<p>6. Friendship?</p>
+<button onclick="checkAnswer('strong')">Strong</button>
+<button onclick="checkAnswer('weak')">Weak</button>
+
+<p id="quizResult"></p>
+
+</section>
+
+<!-- RANDOM -->
+<section>
+<h1>Click</h1>
+<button onclick="randomMsg()">Click me</button>
+<p id="randomText"></p>
+</section>
+
+<!-- APOLOGY -->
+<section>
+<h1>Apology</h1>
+<div class="letter-paper">
+My dear best friend, I want to say this honestly from my heart… I am truly sorry.
+There were moments when I should have been there more, times when I should have spoken earlier, and things I should have made more special for you.
+I didn’t fully realize their importance at that time, but now I understand. 
+Sometimes life becomes busy, and without noticing, we start missing the small moments that actually matter the most. For those missed moments, I am really sorry.
+Even when I was silent or not fully present, you were never far from my thoughts. You have always been someone who listens, understands, and never judges.
+You gave me your time and patience so easily, and I know I wasn’t always able to give the same back at the right time. But one thing I want you to know clearly… you have always mattered to me.
+Our friendship means a lot to me, even if I don’t always express it perfectly. I will try to be better, not just in words, but in actions. With a sincere heart, Your best friend 🖤❤️
+</div>
+</section>
+
+<!-- BIRTHDAY -->
+<section>
+<h1>Birthday</h1>
+<div class="letter-paper">
+My dear best friend, I want to say this honestly from my heart… I am truly sorry. 
+There were moments when I should have been there more, times when I should have spoken earlier, and things I should have made more special for you.
+I didn’t fully realize their importance at that time, but now I understand. Sometimes life becomes busy, and without noticing, we start missing the small moments that actually matter the most.
+For those missed moments, I am really sorry. Even when I was silent or not fully present, you were never far from my thoughts. You have always been someone who listens, understands, and never judges.
+You gave me your time and patience so easily, and I know I wasn’t always able to give the same back at the right time. But one thing I want you to know clearly… you have always mattered to me.
+Our friendship means a lot to me, even if I don’t always express it perfectly. I will try to be better, not just in words, but in actions. With a sincere heart, Your best friend 🖤❤️
+</div>
+</section>
+
+<!-- PROMISE -->
+<section>
+<h1>My Promise</h1>
+<p>I want you to know one thing very clearly…<br><br>
+No matter what happens in your life, I will always be there for you.<br><br> 
+In your happy moments, I will smile with you.<br>
+In your sad moments, I will stand beside you.<br><br> 
+Not just for some time, but always.<br><br> 
+I don’t just want to be part of your memories,<br>
+I want to be part of your life in every phase.<br><br>
+I want to travel with you, explore the world with you,<br> and create moments that we will never forget.<br><br>
+No matter where life takes us,<br> I still want to walk that journey with you.<br><br>
+Because for me, this friendship is not temporary…<br><br> 
+<b>It is something I want to keep forever. 🖤❤️</b>
+</section>
+
+<!-- FINAL -->
+<section>
+<h1>One Last Question</h1>
+<p>Will you be my best friend forever? ❤️</p>
+<button onclick="answerYes()">Yes ❤️</button>
+</section>
 
 <script>
+
+// music
 function startStory(){
 window.scrollTo({top:window.innerHeight,behavior:'smooth'});
 document.getElementById("music").play();
 }
 
+// flipbook
 let current=0;
 function showPage(i){
 let pages=document.querySelectorAll(".page");
@@ -216,272 +285,56 @@ function prev(){
 if(current>0){current--;}
 showPage(current);
 }
-<script>
-function checkAnswer(ans){
+window.onload=function(){showPage(0);}
 
-let result = document.getElementById("quizResult");
+// quiz
+function checkAnswer(ans){
+let result=document.getElementById("quizResult");
 
 if(
-ans === "panipuri" ||
-ans === "drama" ||
-ans === "kind" ||
-ans === "red" ||
-ans === "caring" ||
-ans === "strong"
+ans==="panipuri"||ans==="drama"||ans==="kind"||
+ans==="red"||ans==="caring"||ans==="strong"
 ){
-result.innerHTML = "Correct ❤️ You know our story well!";
+result.innerHTML="Correct ❤️";
+}else{
+result.innerHTML="Wrong 😄";
 }
-else{
-result.innerHTML = "Wrong 😄 but still my best friend ❤️";
 }
-</script>
+
+// random
 function randomMsg(){
 let msgs=[
-"You always listen to me ❤️",
-"You believe in my dreams ❤️",
-"You never judge me ❤️",
-"I am lucky to have you ❤️"
+"You always listen ❤️",
+"You believe in me ❤️",
+"You never judge ❤️"
 ];
-document.getElementById("randomText").innerHTML =
+document.getElementById("randomText").innerHTML=
 msgs[Math.floor(Math.random()*msgs.length)];
 }
+
+// FINAL GLOW
+function answerYes(){
+document.body.innerHTML=`
+<div style="
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:black;
+text-align:center;
+flex-direction:column;
+">
+
+<h1 class="glow-text">
+❤️ You are my forever person ❤️<br><br>
+I will always be there for you.<br><br>
+Always. 🖤❤️
+</h1>
+
+</div>`;
+}
+
 </script>
 
-</head>
-
-<body>
-
-<!-- 🎵 BACKGROUND MUSIC -->
-<audio id="music" loop>
-<source src="thousandyears.mp3" type="audio/mpeg">
-</audio>
-
-<!-- HERO -->
-<section class="hero">
-<h1>9 Years of Friendship</h1>
-<p>Black 🖤 and Red ❤️ — different, but always together</p>
-<button onclick="startStory()">Start</button>
-</section>
-
-<!-- STORY -->
-<section>
-<h1>Our Story</h1>
-
-<img src="images/image1.png"><p>The day our friendship began.</p>
-<img src="images/image2.png"><p>Sharing stories and laughter.</p>
-<img src="images/image3.png"><p>Lunch together.</p>
-<img src="images/image4.png"><p>Panipuri memories.</p>
-<img src="images/image5.png"><p>Talking about dramas.</p>
-<img src="images/image6.png"><p>You always listened.</p>
-<img src="images/image7.png"><p>Talking about dreams.</p>
-<img src="images/image8.png"><p>Even when busy.</p>
-<img src="images/image9.png"><p>Still strong.</p>
-<img src="images/image10.png"><p>Our story continues.</p>
-</section>
-
-<!-- FLIPBOOK -->
-<section>
-<h1>Memories</h1>
-
-<div class="flipbook">
-
-<div class="page">
-I still remember that simple day when we went to the panipuri shop together with our friends. It wasn’t a big event, just a normal evening, but it became a memory I will never forget.
-</div>
-
-<div class="page">
-Those lunch breaks we spent together may have seemed small, but they meant a lot. Sitting together, sharing food, and laughing made everything feel lighter.
-</div>
-
-<div class="page">
-We used to talk about dramas for so long. It was never boring, because it wasn’t about the topic, it was about how comfortable we were.
-</div>
-
-<div class="page">
-You listened to me again and again, without judging or getting tired. That kind of support is something I will always be thankful for.
-</div>
-
-<div class="page">
-When I look back, I realize something… our friendship was built on simple moments, and that is what makes it special.
-</div>
-
-<button onclick="prev()">Previous</button>
-<button onclick="next()">Next</button>
-
-</div>
-</section>
-
-<!-- CHILDHOOD -->
-<section>
-<h1>Little You</h1>
-
-<p>
-Before I knew you, you were already someone special.
-That same kindness is still in you today.
-</p>
-
-<p>
-You love red ❤️ and I love black 🖤.
-Different, but together beautiful.
-</p>
-
-<img src="images/child1.jpg">
-<img src="images/child2.jpg">
-</section>
-
-<!-- DREAMS -->
-<section>
-<h1>Your Dreams</h1>
-<p>
-You want to make your parents proud, build your future, and achieve your dreams.
-I believe you will.
-</p>
-</section>
-
-<!-- QUIZ -->
-<section>
-<h1>Fun Quiz</h1>
-
-<!-- Q1 -->
-<p>1. What did we eat together?</p>
-<button onclick="checkAnswer('panipuri')">Panipuri</button>
-<button onclick="checkAnswer('pizza')">Pizza</button>
-
-<!-- Q2 -->
-<p>2. What did we always talk about?</p>
-<button onclick="checkAnswer('drama')">Dramas</button>
-<button onclick="checkAnswer('sports')">Sports</button>
-
-<!-- Q3 -->
-<p>3. What describes you best?</p>
-<button onclick="checkAnswer('kind')">Kind & Supportive</button>
-<button onclick="checkAnswer('angry')">Always Angry</button>
-
-<!-- Q4 -->
-<p>4. What color do you like?</p>
-<button onclick="checkAnswer('red')">Red ❤️</button>
-<button onclick="checkAnswer('blue')">Blue</button>
-
-<!-- Q5 -->
-<p>5. What kind of person are you?</p>
-<button onclick="checkAnswer('caring')">Caring & Loving</button>
-<button onclick="checkAnswer('selfish')">Selfish</button>
-
-<!-- Q6 -->
-<p>6. What is our friendship like?</p>
-<button onclick="checkAnswer('strong')">Strong & Supportive</button>
-<button onclick="checkAnswer('weak')">Weak</button>
-
-<!-- RESULT -->
-<p id="quizResult" style="color:red; font-size:20px; margin-top:20px;"></p>
-
-</section>
-<!-- RANDOM -->
-<section>
-<h1>Click</h1>
-<button onclick="randomMsg()">Click me</button>
-<p id="randomText"></p>
-</section>
-
-<!-- APOLOGY -->
-<section>
-<h1>Apology</h1>
-<div class="letter-paper">
-My dear best friend,
-I want to say this honestly from my heart… I am truly sorry.
-
-There were moments when I should have been there more, times when I should have spoken earlier, and things I should have made more special for you. I didn’t fully realize their importance at that time, but now I understand.
-
-Sometimes life becomes busy, and without noticing, we start missing the small moments that actually matter the most. For those missed moments, I am really sorry.
-
-Even when I was silent or not fully present, you were never far from my thoughts.
-
-You have always been someone who listens, understands, and never judges. You gave me your time and patience so easily, and I know I wasn’t always able to give the same back at the right time.
-
-But one thing I want you to know clearly… you have always mattered to me.
-
-Our friendship means a lot to me, even if I don’t always express it perfectly.
-
-I will try to be better, not just in words, but in actions.
-
-With a sincere heart,
-Your best friend 🖤❤️
-
-</div>
-</section>
-
-<!-- BIRTHDAY -->
-<section>
-<h1>Birthday</h1>
-<div class="letter-paper">
-My dear best friend,
-I want to say this honestly from my heart… I am truly sorry.
-
-There were moments when I should have been there more, times when I should have spoken earlier, and things I should have made more special for you. I didn’t fully realize their importance at that time, but now I understand.
-
-Sometimes life becomes busy, and without noticing, we start missing the small moments that actually matter the most. For those missed moments, I am really sorry.
-
-Even when I was silent or not fully present, you were never far from my thoughts.
-
-You have always been someone who listens, understands, and never judges. You gave me your time and patience so easily, and I know I wasn’t always able to give the same back at the right time.
-
-But one thing I want you to know clearly… you have always mattered to me.
-
-Our friendship means a lot to me, even if I don’t always express it perfectly.
-
-I will try to be better, not just in words, but in actions.
-
-With a sincere heart,
-Your best friend 🖤❤️
-
-</div>
-</section>
-
-<!-- SONG VIDEO -->
-<section>
-<h1>This Reminded Me of You</h1>
-<iframe width="300" height="170"
-src="https://www.youtube.com/embed/QJO3ROT-A4E">
-</iframe>
-</section>
-<section>
-<h1>My Promise</h1>
-
-<p style="max-width:700px; margin:auto; line-height:2; font-size:20px;">
-
-I want you to know one thing very clearly…<br><br>
-
-No matter what happens in your life, I will always be there for you.<br><br>
-
-In your happy moments, I will smile with you.<br>
-In your sad moments, I will stand beside you.<br><br>
-
-Not just for some time, but always.<br><br>
-
-I don’t just want to be part of your memories,<br>
-I want to be part of your life in every phase.<br><br>
-
-I want to travel with you, explore the world with you,<br>
-and create moments that we will never forget.<br><br>
-
-No matter where life takes us,<br>
-I still want to walk that journey with you.<br><br>
-
-Because for me, this friendship is not temporary…<br><br>
-
-<b>It is something I want to keep forever. 🖤❤️</b>
-
-</p>
-
-</section>
-<!-- FINAL -->
-<section>
-<h1>One Last Question</h1>
-
-<p style="font-size:22px;">
-Will you be my best friend forever? ❤️
-</p>
-
-<button onclick="finalAnswer()">Yes ❤️</button>
-
-</section>
+</body>
+</html>
