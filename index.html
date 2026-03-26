@@ -14,36 +14,96 @@ color:white;
 font-family:Arial;
 text-align:center;
 }
-<script>
-function finalAnswer(){
-document.body.innerHTML = `
-<div style="
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-background:black;
+<style>
+.glow-text{
 color:red;
-font-size:28px;
-flex-direction:column;
+font-size:30px;
 font-family:'Dancing Script', cursive;
 text-align:center;
-line-height:2;
-">
-
-❤️ You are my forever person ❤️<br><br>
-
-No matter what happens,<br>
-I will always be there for you.<br><br>
-
-In your happiness and in your sadness,<br>
-in every moment of life…<br><br>
-
-I choose this friendship.<br>
-Always. 🖤❤️
-
-</div>`;
+animation: glow 2s ease-in-out infinite alternate;
 }
+
+@keyframes glow{
+from{
+text-shadow: 0 0 10px red, 0 0 20px red;
+}
+to{
+text-shadow: 0 0 20px pink, 0 0 40px red;
+}
+
+
+/* floating hearts */
+.heart{
+position:fixed;
+color:red;
+font-size:20px;
+animation: floatUp 4s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(100vh); opacity:1;}
+100%{transform:translateY(-10vh); opacity:0;}
+}
+</style>
+  <style>
+.glow-text{
+color:red;
+font-size:30px;
+font-family:'Dancing Script', cursive;
+text-align:center;
+animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+from{
+text-shadow: 0 0 10px red, 0 0 20px red;
+}
+to{
+text-shadow: 0 0 20px pink, 0 0 40px red;
+}
+}
+
+/* floating hearts */
+.heart{
+position:fixed;
+color:red;
+font-size:20px;
+animation: floatUp 4s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(100vh); opacity:1;}
+100%{transform:translateY(-10vh); opacity:0;}
+}
+</style>
+  <style>
+.glow-text{
+color:red;
+font-size:30px;
+font-family:'Dancing Script', cursive;
+text-align:center;
+animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+from{
+text-shadow: 0 0 10px red, 0 0 20px red;
+}
+to{
+text-shadow: 0 0 20px pink, 0 0 40px red;
+}
+/* floating hearts */
+.heart{
+position:fixed;
+color:red;
+font-size:20px;
+animation: floatUp 4s linear infinite;
+}
+@keyframes floatUp{
+0%{transform:translateY(100vh); opacity:1;}
+100%{transform:translateY(-10vh); opacity:0;}
+}
+</style>
 </script>
 /* HERO */
 .hero{
@@ -156,16 +216,25 @@ function prev(){
 if(current>0){current--;}
 showPage(current);
 }
-window.onload=function(){showPage(0);}
+<script>
+function checkAnswer(ans){
 
-function quiz(ans){
-if(ans==="panipuri"){
-alert("Correct ❤️");
-}else{
-alert("Wrong 😄 but still my best friend");
-}
-}
+let result = document.getElementById("quizResult");
 
+if(
+ans === "panipuri" ||
+ans === "drama" ||
+ans === "kind" ||
+ans === "red" ||
+ans === "caring" ||
+ans === "strong"
+){
+result.innerHTML = "Correct ❤️ You know our story well!";
+}
+else{
+result.innerHTML = "Wrong 😄 but still my best friend ❤️";
+}
+</script>
 function randomMsg(){
 let msgs=[
 "You always listen to me ❤️",
@@ -271,21 +340,42 @@ I believe you will.
 
 <!-- QUIZ -->
 <section>
-<h1>Quiz</h1>
-<p>What did we eat?</p>
-<button onclick="quiz('panipuri')">Panipuri</button>
-<button onclick="quiz('pizza')">Pizza</button>  
-<p>What did we always talk about?</p>
+<h1>Fun Quiz</h1>
+
+<!-- Q1 -->
+<p>1. What did we eat together?</p>
+<button onclick="checkAnswer('panipuri')">Panipuri</button>
+<button onclick="checkAnswer('pizza')">Pizza</button>
+
+<!-- Q2 -->
+<p>2. What did we always talk about?</p>
 <button onclick="checkAnswer('drama')">Dramas</button>
 <button onclick="checkAnswer('sports')">Sports</button>
-<p>What describes you best?</p>
+
+<!-- Q3 -->
+<p>3. What describes you best?</p>
 <button onclick="checkAnswer('kind')">Kind & Supportive</button>
 <button onclick="checkAnswer('angry')">Always Angry</button>
-<p>What color do you like?</p>
+
+<!-- Q4 -->
+<p>4. What color do you like?</p>
 <button onclick="checkAnswer('red')">Red ❤️</button>
 <button onclick="checkAnswer('blue')">Blue</button>
-</section>
 
+<!-- Q5 -->
+<p>5. What kind of person are you?</p>
+<button onclick="checkAnswer('caring')">Caring & Loving</button>
+<button onclick="checkAnswer('selfish')">Selfish</button>
+
+<!-- Q6 -->
+<p>6. What is our friendship like?</p>
+<button onclick="checkAnswer('strong')">Strong & Supportive</button>
+<button onclick="checkAnswer('weak')">Weak</button>
+
+<!-- RESULT -->
+<p id="quizResult" style="color:red; font-size:20px; margin-top:20px;"></p>
+
+</section>
 <!-- RANDOM -->
 <section>
 <h1>Click</h1>
@@ -387,7 +477,11 @@ Because for me, this friendship is not temporary…<br><br>
 <!-- FINAL -->
 <section>
 <h1>One Last Question</h1>
-<p>Will you be my best friend forever and always? ❤️</p>
-<button onclick="answerYes()">Yes ❤️</button>
-<button onclick="answerNo()">No 💔</button>
+
+<p style="font-size:22px;">
+Will you be my best friend forever? ❤️
+</p>
+
+<button onclick="finalAnswer()">Yes ❤️</button>
+
 </section>
