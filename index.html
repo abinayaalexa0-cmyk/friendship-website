@@ -14,7 +14,37 @@ color:white;
 font-family:Arial;
 text-align:center;
 }
+<script>
+function finalAnswer(){
+document.body.innerHTML = `
+<div style="
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:black;
+color:red;
+font-size:28px;
+flex-direction:column;
+font-family:'Dancing Script', cursive;
+text-align:center;
+line-height:2;
+">
 
+❤️ You are my forever person ❤️<br><br>
+
+No matter what happens,<br>
+I will always be there for you.<br><br>
+
+In your happiness and in your sadness,<br>
+in every moment of life…<br><br>
+
+I choose this friendship.<br>
+Always. 🖤❤️
+
+</div>`;
+}
+</script>
 /* HERO */
 .hero{
 height:100vh;
@@ -44,7 +74,15 @@ margin:20px 0;
 border-radius:12px;
 box-shadow:0 0 15px red;
 }
+<section>
+<h1>One Last Question</h1>
 
+<p>Will you be my best friend forever and always? ❤️</p>
+
+<button onclick="answerYes()">Yes ❤️</button>
+<button onclick="answerNo()">No 💔</button>
+
+</section>
 /* FLIPBOOK */
 .flipbook{
 background:black;
@@ -75,21 +113,25 @@ cursor:pointer;
 
 /* LETTER PAPER */
 .letter-paper{
-background:#f5e6c8;
-padding:40px;
-border-radius:8px;
-max-width:700px;
-margin:40px auto;
-box-shadow:0 0 20px rgba(0,0,0,0.6),
-inset 0 0 30px rgba(0,0,0,0.2);
-border:2px solid #d2b48c;
-font-family:'Cormorant Garamond', serif;
-color:#3b2f2f;
-line-height:1.9;
-font-size:20px;
-text-align:left;
-}
+background: #f5e6c8;
+padding: 40px;
+border-radius: 8px;
+max-width: 700px;
+margin: 40px auto;
 
+box-shadow: 
+0 0 20px rgba(0,0,0,0.6),
+inset 0 0 30px rgba(0,0,0,0.2);
+
+border: 2px solid #d2b48c;
+
+font-family: 'Cormorant Garamond', serif;
+color: #3b2f2f;
+line-height: 1.9;
+font-size: 20px;
+text-align: left;
+}font-family: 'Great Vibes', cursive;
+font-size: 24px;
 #randomText{color:red;}
 </style>
 
@@ -232,7 +274,16 @@ I believe you will.
 <h1>Quiz</h1>
 <p>What did we eat?</p>
 <button onclick="quiz('panipuri')">Panipuri</button>
-<button onclick="quiz('pizza')">Pizza</button>
+<button onclick="quiz('pizza')">Pizza</button>  
+<p>What did we always talk about?</p>
+<button onclick="checkAnswer('drama')">Dramas</button>
+<button onclick="checkAnswer('sports')">Sports</button>
+<p>What describes you best?</p>
+<button onclick="checkAnswer('kind')">Kind & Supportive</button>
+<button onclick="checkAnswer('angry')">Always Angry</button>
+<p>What color do you like?</p>
+<button onclick="checkAnswer('red')">Red ❤️</button>
+<button onclick="checkAnswer('blue')">Blue</button>
 </section>
 
 <!-- RANDOM -->
@@ -247,18 +298,25 @@ I believe you will.
 <h1>Apology</h1>
 <div class="letter-paper">
 My dear best friend,
+I want to say this honestly from my heart… I am truly sorry.
 
-I am truly sorry.
+There were moments when I should have been there more, times when I should have spoken earlier, and things I should have made more special for you. I didn’t fully realize their importance at that time, but now I understand.
 
-There were moments I should have been there more, and I didn’t realize their importance at that time.
+Sometimes life becomes busy, and without noticing, we start missing the small moments that actually matter the most. For those missed moments, I am really sorry.
 
-Even when I was silent, you were always in my thoughts.
+Even when I was silent or not fully present, you were never far from my thoughts.
 
-You have always mattered to me.
+You have always been someone who listens, understands, and never judges. You gave me your time and patience so easily, and I know I wasn’t always able to give the same back at the right time.
 
-I will try to be better.
+But one thing I want you to know clearly… you have always mattered to me.
 
+Our friendship means a lot to me, even if I don’t always express it perfectly.
+
+I will try to be better, not just in words, but in actions.
+
+With a sincere heart,
 Your best friend 🖤❤️
+
 </div>
 </section>
 
@@ -267,7 +325,24 @@ Your best friend 🖤❤️
 <h1>Birthday</h1>
 <div class="letter-paper">
 My dear best friend,
+I want to say this honestly from my heart… I am truly sorry.
 
+There were moments when I should have been there more, times when I should have spoken earlier, and things I should have made more special for you. I didn’t fully realize their importance at that time, but now I understand.
+
+Sometimes life becomes busy, and without noticing, we start missing the small moments that actually matter the most. For those missed moments, I am really sorry.
+
+Even when I was silent or not fully present, you were never far from my thoughts.
+
+You have always been someone who listens, understands, and never judges. You gave me your time and patience so easily, and I know I wasn’t always able to give the same back at the right time.
+
+But one thing I want you to know clearly… you have always mattered to me.
+
+Our friendship means a lot to me, even if I don’t always express it perfectly.
+
+I will try to be better, not just in words, but in actions.
+
+With a sincere heart,
+Your best friend 🖤❤️
 
 </div>
 </section>
@@ -279,16 +354,40 @@ My dear best friend,
 src="https://www.youtube.com/embed/QJO3ROT-A4E">
 </iframe>
 </section>
+<section>
+<h1>My Promise</h1>
 
+<p style="max-width:700px; margin:auto; line-height:2; font-size:20px;">
+
+I want you to know one thing very clearly…<br><br>
+
+No matter what happens in your life, I will always be there for you.<br><br>
+
+In your happy moments, I will smile with you.<br>
+In your sad moments, I will stand beside you.<br><br>
+
+Not just for some time, but always.<br><br>
+
+I don’t just want to be part of your memories,<br>
+I want to be part of your life in every phase.<br><br>
+
+I want to travel with you, explore the world with you,<br>
+and create moments that we will never forget.<br><br>
+
+No matter where life takes us,<br>
+I still want to walk that journey with you.<br><br>
+
+Because for me, this friendship is not temporary…<br><br>
+
+<b>It is something I want to keep forever. 🖤❤️</b>
+
+</p>
+
+</section>
 <!-- FINAL -->
 <section>
-<h1>Final</h1>
-<p>
-No matter how busy life becomes,<br>
-our friendship stays the same.<br><br>
-Because you are not replaceable.
-</p>
+<h1>One Last Question</h1>
+<p>Will you be my best friend forever and always? ❤️</p>
+<button onclick="answerYes()">Yes ❤️</button>
+<button onclick="answerNo()">No 💔</button>
 </section>
-
-</body>
-</html>
