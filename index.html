@@ -1,340 +1,908 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Our Story</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Cormorant+Garamond&display=swap" rel="stylesheet">
-
-<style>
-body{
-margin:0;
-background:black;
-color:white;
-font-family:Arial;
-text-align:center;
-}
-
-/* HERO */
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-background:
-linear-gradient(rgba(0,0,0,0.7), rgba(255,0,0,0.4)),
-url("images/background.jpg");
-background-size:cover;
-background-position:center;
-}
-
-section{
-padding:60px 20px;
-max-width:900px;
-margin:auto;
-}
-
-h1{color:red;}
-
-img{
-width:80%;
-max-width:400px;
-margin:20px 0;
-border-radius:12px;
-box-shadow:0 0 15px red;
-}
-
-/* BUTTON */
-button{
-background:red;
-color:black;
-padding:10px 20px;
-border:none;
-margin:10px;
-border-radius:8px;
-cursor:pointer;
-}
-button:hover{
-transform:scale(1.1);
-}
-
-/* FLIPBOOK */
-.flipbook{
-background:black;
-color:red;
-padding:30px;
-border-radius:10px;
-box-shadow:0 0 10px red;
-}
-.page{
-display:none;
-font-family:'Dancing Script', cursive;
-font-size:20px;
-line-height:2;
-}
-.page.active{display:block;}
-
-/* LETTER */
-.letter-paper{
-background:#f5e6c8;
-padding:40px;
-border-radius:8px;
-max-width:700px;
-margin:40px auto;
-box-shadow:0 0 20px rgba(0,0,0,0.6),
-inset 0 0 30px rgba(0,0,0,0.2);
-border:2px solid #d2b48c;
-font-family:'Cormorant Garamond', serif;
-color:#3b2f2f;
-line-height:1.9;
-font-size:20px;
-text-align:left;
-}
-
-/* GLOW */
-.glow-text{
-color:red;
-font-size:30px;
-font-family:'Dancing Script', cursive;
-animation: glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{ text-shadow:0 0 10px red; }
-to{ text-shadow:0 0 30px pink; }
-}
-
-#quizResult{color:red; font-size:20px;}
-#randomText{color:red;}
-</style>
-</head>
-
-<body>
-
-<!-- 🎵 MUSIC -->
-<audio id="music" loop>
-<source src="thousandyears.mp3" type="audio/mpeg">
-</audio>
-
-<!-- HERO -->
-<section class="hero">
-<h1>9 Years of Friendship</h1>
-<p>Black 🖤 and Red ❤️ — always together</p>
-<button onclick="startStory()">Start</button>
-</section>
-
-<!-- STORY -->
-<section>
-<h1>Our Story</h1>
-
-<img src="images/image1.png"><p>The day our friendship began.</p>
-<img src="images/image2.png"><p>Sharing laughter.</p>
-<img src="images/image3.png"><p>Lunch together.</p>
-<img src="images/image4.png"><p>Panipuri memories.</p>
-<img src="images/image5.png"><p>Drama talks.</p>
-<img src="images/image6.png"><p>You listened.</p>
-<img src="images/image7.png"><p>Dream talks.</p>
-<img src="images/image8.png"><p>Busy days.</p>
-<img src="images/image9.png"><p>Still strong.</p>
-<img src="images/image10.png"><p>Our story continues.</p>
-
-</section>
-
-<!-- FLIPBOOK -->
-<section>
-<h1>Memories</h1>
-<div class="flipbook">
-
-<div class="page"> I still remember that simple day when we went to the panipuri shop together with our friends. It wasn’t a big event, just a normal evening, but it became a memory I will never forget.
-</div> <div class="page"> Those lunch breaks we spent together may have seemed small, but they meant a lot. Sitting together, sharing food, and laughing made everything feel lighter.
-</div> <div class="page"> We used to talk about dramas for so long. It was never boring, because it wasn’t about the topic, it was about how comfortable we were.
-</div> <div class="page"> You listened to me again and again, without judging or getting tired. That kind of support is something I will always be thankful for.
-</div> <div class="page"> When I look back, I realize something… our friendship was built on simple moments, and that is what makes it special. </div>
-
-<button onclick="prev()">Previous</button>
-<button onclick="next()">Next</button>
-
-</div>
-</section>
-
-<!-- CHILDHOOD -->
-<section>
-<h1>Little You</h1>
-<p>You were always kind… even before I knew you.</p>
-<img src="images/child1.jpg">
-<img src="images/child2.jpg">
-</section>
-
-<!-- DREAMS -->
-<section>
-<h1>Your Dreams</h1>
-<p>You will make your parents proud. I believe in you.</p>
-</section>
-
-<!-- QUIZ -->
-<section>
-<h1>Fun Quiz</h1>
-
-<p>1. What did we eat?</p>
-<button onclick="checkAnswer('panipuri')">Panipuri</button>
-<button onclick="checkAnswer('pizza')">Pizza</button>
-
-<p>2. What did we talk about?</p>
-<button onclick="checkAnswer('drama')">Dramas</button>
-<button onclick="checkAnswer('sports')">Sports</button>
-
-<p>3. What describes you?</p>
-<button onclick="checkAnswer('kind')">Kind</button>
-<button onclick="checkAnswer('angry')">Angry</button>
-
-<p>4. Favorite color?</p>
-<button onclick="checkAnswer('red')">Red</button>
-<button onclick="checkAnswer('blue')">Blue</button>
-
-<p>5. Personality?</p>
-<button onclick="checkAnswer('caring')">Caring</button>
-<button onclick="checkAnswer('selfish')">Selfish</button>
-
-<p>6. Friendship?</p>
-<button onclick="checkAnswer('strong')">Strong</button>
-<button onclick="checkAnswer('weak')">Weak</button>
-
-<p id="quizResult"></p>
-
-</section>
-
-<!-- RANDOM -->
-<section>
-<h1>Click</h1>
-<button onclick="randomMsg()">Click me</button>
-<p id="randomText"></p>
-</section>
-
-<!-- APOLOGY -->
-<section>
-<h1>Apology</h1>
-<div class="letter-paper">
-My dear best friend, I want to say this honestly from my heart… I am truly sorry.
-There were moments when I should have been there more, times when I should have spoken earlier, and things I should have made more special for you.
-I didn’t fully realize their importance at that time, but now I understand. 
-Sometimes life becomes busy, and without noticing, we start missing the small moments that actually matter the most. For those missed moments, I am really sorry.
-Even when I was silent or not fully present, you were never far from my thoughts. You have always been someone who listens, understands, and never judges.
-You gave me your time and patience so easily, and I know I wasn’t always able to give the same back at the right time. But one thing I want you to know clearly… you have always mattered to me.
-Our friendship means a lot to me, even if I don’t always express it perfectly. I will try to be better, not just in words, but in actions. With a sincere heart, Your best friend 🖤❤️
-</div>
-</section>
-
-<!-- BIRTHDAY -->
-<section>
-<h1>Birthday</h1>
-<div class="letter-paper">
-My dear best friend, I want to say this honestly from my heart… I am truly sorry. 
-There were moments when I should have been there more, times when I should have spoken earlier, and things I should have made more special for you.
-I didn’t fully realize their importance at that time, but now I understand. Sometimes life becomes busy, and without noticing, we start missing the small moments that actually matter the most.
-For those missed moments, I am really sorry. Even when I was silent or not fully present, you were never far from my thoughts. You have always been someone who listens, understands, and never judges.
-You gave me your time and patience so easily, and I know I wasn’t always able to give the same back at the right time. But one thing I want you to know clearly… you have always mattered to me.
-Our friendship means a lot to me, even if I don’t always express it perfectly. I will try to be better, not just in words, but in actions. With a sincere heart, Your best friend 🖤❤️
-</div>
-</section>
-
-<!-- PROMISE -->
-<section>
-<h1>My Promise</h1>
-<p>I want you to know one thing very clearly…<br><br>
-No matter what happens in your life, I will always be there for you.<br><br> 
-In your happy moments, I will smile with you.<br>
-In your sad moments, I will stand beside you.<br><br> 
-Not just for some time, but always.<br><br> 
-I don’t just want to be part of your memories,<br>
-I want to be part of your life in every phase.<br><br>
-I want to travel with you, explore the world with you,<br> and create moments that we will never forget.<br><br>
-No matter where life takes us,<br> I still want to walk that journey with you.<br><br>
-Because for me, this friendship is not temporary…<br><br> 
-<b>It is something I want to keep forever. 🖤❤️</b>
-</section>
-
-<!-- FINAL -->
-<section>
-<h1>One Last Question</h1>
-<p>Will you be my best friend forever? ❤️</p>
-<button onclick="answerYes()">Yes ❤️</button>
-</section>
-
-<script>
-
-// music
-function startStory(){
-window.scrollTo({top:window.innerHeight,behavior:'smooth'});
-document.getElementById("music").play();
-}
-
-// flipbook
-let current=0;
-function showPage(i){
-let pages=document.querySelectorAll(".page");
-pages.forEach(p=>p.classList.remove("active"));
-pages[i].classList.add("active");
-}
-function next(){
-let pages=document.querySelectorAll(".page");
-if(current<pages.length-1){current++;}
-showPage(current);
-}
-function prev(){
-if(current>0){current--;}
-showPage(current);
-}
-window.onload=function(){showPage(0);}
-
-// quiz
-function checkAnswer(ans){
-let result=document.getElementById("quizResult");
-
-if(
-ans==="panipuri"||ans==="drama"||ans==="kind"||
-ans==="red"||ans==="caring"||ans==="strong"
-){
-result.innerHTML="Correct ❤️";
-}else{
-result.innerHTML="Wrong 😄";
-}
-}
-
-// random
-function randomMsg(){
-let msgs=[
-"You always listen ❤️",
-"You believe in me ❤️",
-"You never judge ❤️"
-];
-document.getElementById("randomText").innerHTML=
-msgs[Math.floor(Math.random()*msgs.length)];
-}
-
-// FINAL GLOW
-function answerYes(){
-document.body.innerHTML=`
-<div style="
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-background:black;
-text-align:center;
-flex-direction:column;
-">
-
-<h1 class="glow-text">
-❤️ You are my forever person ❤️<br><br>
-I will always be there for you.<br><br>
-Always. 🖤❤️
-</h1>
-
-</div>`;
-}
-
-</script>
-
-</body>
-</html>
+Yes! I'll show you the complete code. Let me display it so you can copy and paste it directly to GitHub:
+Action: file_editor view /app/friendship-website.html
+Observation: [Showing lines 1-904 of 904 total] /app/friendship-website.html:
+1|<!DOCTYPE html>
+2|<html lang="en">
+3|<head>
+4|    <meta charset="UTF-8">
+5|    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+6|    <title>9 Years of Friendship 🖤❤️</title>
+7|    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+8|    <style>
+9|        * {
+10|            margin: 0;
+11|            padding: 0;
+12|            box-sizing: border-box;
+13|        }
+14|
+15|        body {
+16|            font-family: 'Inter', sans-serif;
+17|            background: #000;
+18|            color: #fff;
+19|            overflow-x: hidden;
+20|        }
+21|
+22|        h1, h2 {
+23|            font-family: 'Playfair Display', serif;
+24|        }
+25|
+26|        .section {
+27|            min-height: 100vh;
+28|            display: flex;
+29|            flex-direction: column;
+30|            justify-content: center;
+31|            align-items: center;
+32|            padding: 60px 20px;
+33|            opacity: 0;
+34|            transform: translateY(30px);
+35|            transition: opacity 1s ease, transform 1s ease;
+36|        }
+37|
+38|        .section.visible {
+39|            opacity: 1;
+40|            transform: translateY(0);
+41|        }
+42|
+43|        /* Hero Section */
+44|        #hero {
+45|            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/background.jpg');
+46|            background-size: cover;
+47|            background-position: center;
+48|            background-attachment: fixed;
+49|            position: relative;
+50|            text-align: center;
+51|        }
+52|
+53|        #hero h1 {
+54|            font-size: clamp(48px, 8vw, 96px);
+55|            margin-bottom: 40px;
+56|            background: linear-gradient(135deg, #000 0%, #ff0000 100%);
+57|            -webkit-background-clip: text;
+58|            -webkit-text-fill-color: transparent;
+59|            background-clip: text;
+60|            font-weight: 700;
+61|        }
+62|
+63|        .btn {
+64|            padding: 18px 50px;
+65|            font-size: 20px;
+66|            background: #ff0000;
+67|            color: #fff;
+68|            border: none;
+69|            border-radius: 50px;
+70|            cursor: pointer;
+71|            transition: all 0.4s ease;
+72|            font-weight: 600;
+73|            letter-spacing: 1px;
+74|            box-shadow: 0 8px 30px rgba(255,0,0,0.4);
+75|        }
+76|
+77|        .btn:hover {
+78|            background: #cc0000;
+79|            transform: translateY(-3px);
+80|            box-shadow: 0 12px 40px rgba(255,0,0,0.6);
+81|        }
+82|
+83|        /* Story Section */
+84|        #story {
+85|            background: #0a0a0a;
+86|        }
+87|
+88|        #story h2 {
+89|            font-size: clamp(36px, 6vw, 64px);
+90|            margin-bottom: 60px;
+91|            color: #ff0000;
+92|        }
+93|
+94|        .story-grid {
+95|            display: grid;
+96|            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+97|            gap: 30px;
+98|            max-width: 1200px;
+99|            width: 100%;
+100|        }
+101|
+102|        .story-item {
+103|            position: relative;
+104|            border-radius: 20px;
+105|            overflow: hidden;
+106|            box-shadow: 0 10px 30px rgba(255,0,0,0.2);
+107|            transition: transform 0.4s ease, box-shadow 0.4s ease;
+108|        }
+109|
+110|        .story-item:hover {
+111|            transform: scale(1.05);
+112|            box-shadow: 0 15px 50px rgba(255,0,0,0.4);
+113|        }
+114|
+115|        .story-item img {
+116|            width: 100%;
+117|            height: 350px;
+118|            object-fit: cover;
+119|            display: block;
+120|        }
+121|
+122|        .story-caption {
+123|            position: absolute;
+124|            bottom: 0;
+125|            left: 0;
+126|            right: 0;
+127|            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+128|            padding: 30px 20px 20px;
+129|            color: #fff;
+130|            font-size: 18px;
+131|            text-align: center;
+132|            font-weight: 600;
+133|        }
+134|
+135|        /* Flipbook Section */
+136|        #flipbook {
+137|            background: #000;
+138|        }
+139|
+140|        #flipbook h2 {
+141|            font-size: clamp(36px, 6vw, 64px);
+142|            margin-bottom: 40px;
+143|            color: #ff0000;
+144|        }
+145|
+146|        .flipbook-container {
+147|            max-width: 700px;
+148|            width: 100%;
+149|            background: #1a1a1a;
+150|            border-radius: 20px;
+151|            padding: 50px;
+152|            box-shadow: 0 20px 60px rgba(255,0,0,0.3);
+153|            min-height: 400px;
+154|            position: relative;
+155|        }
+156|
+157|        .flipbook-page {
+158|            display: none;
+159|            text-align: center;
+160|            animation: fadeIn 0.6s ease;
+161|        }
+162|
+163|        .flipbook-page.active {
+164|            display: block;
+165|        }
+166|
+167|        .flipbook-page h3 {
+168|            font-size: 28px;
+169|            color: #ff0000;
+170|            margin-bottom: 25px;
+171|            font-family: 'Playfair Display', serif;
+172|        }
+173|
+174|        .flipbook-page p {
+175|            font-size: 18px;
+176|            line-height: 1.8;
+177|            color: #ccc;
+178|        }
+179|
+180|        .flipbook-nav {
+181|            margin-top: 40px;
+182|            display: flex;
+183|            gap: 20px;
+184|            justify-content: center;
+185|        }
+186|
+187|        .nav-btn {
+188|            padding: 12px 30px;
+189|            background: #ff0000;
+190|            color: #fff;
+191|            border: none;
+192|            border-radius: 30px;
+193|            cursor: pointer;
+194|            font-size: 16px;
+195|            font-weight: 600;
+196|            transition: all 0.3s ease;
+197|        }
+198|
+199|        .nav-btn:hover {
+200|            background: #cc0000;
+201|            transform: translateY(-2px);
+202|        }
+203|
+204|        .nav-btn:disabled {
+205|            background: #555;
+206|            cursor: not-allowed;
+207|            transform: none;
+208|        }
+209|
+210|        /* Childhood Section */
+211|        #childhood {
+212|            background: #0a0a0a;
+213|        }
+214|
+215|        #childhood h2 {
+216|            font-size: clamp(36px, 6vw, 64px);
+217|            margin-bottom: 30px;
+218|            color: #ff0000;
+219|        }
+220|
+221|        .childhood-intro {
+222|            max-width: 800px;
+223|            text-align: center;
+224|            font-size: 20px;
+225|            line-height: 1.8;
+226|            margin-bottom: 50px;
+227|            color: #ddd;
+228|        }
+229|
+230|        .childhood-photos {
+231|            display: flex;
+232|            gap: 30px;
+233|            flex-wrap: wrap;
+234|            justify-content: center;
+235|            max-width: 900px;
+236|        }
+237|
+238|        .childhood-photo {
+239|            width: 400px;
+240|            height: 400px;
+241|            border-radius: 20px;
+242|            overflow: hidden;
+243|            box-shadow: 0 15px 50px rgba(255,0,0,0.3);
+244|            transition: transform 0.4s ease;
+245|        }
+246|
+247|        .childhood-photo:hover {
+248|            transform: scale(1.05) rotate(2deg);
+249|        }
+250|
+251|        .childhood-photo img {
+252|            width: 100%;
+253|            height: 100%;
+254|            object-fit: cover;
+255|        }
+256|
+257|        /* Dreams Section */
+258|        #dreams {
+259|            background: #000;
+260|        }
+261|
+262|        #dreams h2 {
+263|            font-size: clamp(36px, 6vw, 64px);
+264|            margin-bottom: 40px;
+265|            color: #ff0000;
+266|        }
+267|
+268|        .dreams-content {
+269|            max-width: 800px;
+270|            text-align: center;
+271|            font-size: 22px;
+272|            line-height: 2;
+273|            color: #ddd;
+274|        }
+275|
+276|        .dreams-content p {
+277|            margin-bottom: 25px;
+278|        }
+279|
+280|        .dreams-highlight {
+281|            color: #ff0000;
+282|            font-weight: 600;
+283|            font-size: 26px;
+284|        }
+285|
+286|        /* Quiz Section */
+287|        #quiz {
+288|            background: #0a0a0a;
+289|        }
+290|
+291|        #quiz h2 {
+292|            font-size: clamp(36px, 6vw, 64px);
+293|            margin-bottom: 50px;
+294|            color: #ff0000;
+295|        }
+296|
+297|        .quiz-container {
+298|            max-width: 700px;
+299|            width: 100%;
+300|        }
+301|
+302|        .quiz-question {
+303|            background: #1a1a1a;
+304|            padding: 40px;
+305|            border-radius: 20px;
+306|            margin-bottom: 30px;
+307|            box-shadow: 0 10px 40px rgba(255,0,0,0.2);
+308|        }
+309|
+310|        .quiz-question h3 {
+311|            font-size: 24px;
+312|            margin-bottom: 25px;
+313|            color: #fff;
+314|        }
+315|
+316|        .quiz-answer {
+317|            background: #ff0000;
+318|            color: #fff;
+319|            padding: 15px 30px;
+320|            border-radius: 15px;
+321|            font-size: 18px;
+322|            font-weight: 600;
+323|            display: inline-block;
+324|            cursor: pointer;
+325|            transition: all 0.3s ease;
+326|        }
+327|
+328|        .quiz-answer:hover {
+329|            background: #cc0000;
+330|            transform: scale(1.05);
+331|        }
+332|
+333|        /* Random Message Section */
+334|        #random-message {
+335|            background: #000;
+336|        }
+337|
+338|        #random-message h2 {
+339|            font-size: clamp(36px, 6vw, 64px);
+340|            margin-bottom: 40px;
+341|            color: #ff0000;
+342|        }
+343|
+344|        .message-box {
+345|            max-width: 600px;
+346|            min-height: 200px;
+347|            background: #1a1a1a;
+348|            border-radius: 20px;
+349|            padding: 40px;
+350|            margin-bottom: 30px;
+351|            display: flex;
+352|            align-items: center;
+353|            justify-content: center;
+354|            box-shadow: 0 10px 40px rgba(255,0,0,0.3);
+355|        }
+356|
+357|        .message-text {
+358|            font-size: 24px;
+359|            line-height: 1.8;
+360|            color: #fff;
+361|            text-align: center;
+362|        }
+363|
+364|        /* Letter Sections */
+365|        .letter-section {
+366|            background: #0a0a0a;
+367|        }
+368|
+369|        .letter-section h2 {
+370|            font-size: clamp(36px, 6vw, 64px);
+371|            margin-bottom: 40px;
+372|            color: #ff0000;
+373|        }
+374|
+375|        .letter-content {
+376|            max-width: 800px;
+377|            background: #1a1a1a;
+378|            padding: 50px;
+379|            border-radius: 20px;
+380|            box-shadow: 0 15px 50px rgba(255,0,0,0.3);
+381|            text-align: left;
+382|            line-height: 2;
+383|            font-size: 18px;
+384|            color: #ddd;
+385|        }
+386|
+387|        .letter-content p {
+388|            margin-bottom: 20px;
+389|        }
+390|
+391|        .letter-signature {
+392|            text-align: right;
+393|            font-style: italic;
+394|            color: #ff0000;
+395|            margin-top: 40px;
+396|            font-size: 20px;
+397|        }
+398|
+399|        /* Promise Section */
+400|        #promise {
+401|            background: #000;
+402|        }
+403|
+404|        #promise h2 {
+405|            font-size: clamp(36px, 6vw, 64px);
+406|            margin-bottom: 40px;
+407|            color: #ff0000;
+408|        }
+409|
+410|        .promise-content {
+411|            max-width: 700px;
+412|            text-align: center;
+413|            font-size: 20px;
+414|            line-height: 2;
+415|            color: #ddd;
+416|        }
+417|
+418|        .promise-content b {
+419|            color: #ff0000;
+420|            font-size: 24px;
+421|        }
+422|
+423|        /* Final Question Section */
+424|        #final-question {
+425|            background: #0a0a0a;
+426|        }
+427|
+428|        #final-question h2 {
+429|            font-size: clamp(36px, 6vw, 64px);
+430|            margin-bottom: 40px;
+431|            color: #ff0000;
+432|            text-align: center;
+433|        }
+434|
+435|        .question-text {
+436|            font-size: 28px;
+437|            margin-bottom: 50px;
+438|            color: #fff;
+439|            text-align: center;
+440|        }
+441|
+442|        .yes-btn {
+443|            padding: 25px 80px;
+444|            font-size: 32px;
+445|            background: #ff0000;
+446|            color: #fff;
+447|            border: none;
+448|            border-radius: 50px;
+449|            cursor: pointer;
+450|            font-weight: 700;
+451|            transition: all 0.4s ease;
+452|            box-shadow: 0 10px 40px rgba(255,0,0,0.5);
+453|        }
+454|
+455|        .yes-btn:hover {
+456|            background: #cc0000;
+457|            transform: scale(1.1);
+458|            box-shadow: 0 15px 60px rgba(255,0,0,0.7);
+459|        }
+460|
+461|        /* Final Glow Section */
+462|        #final-glow {
+463|            display: none;
+464|            position: fixed;
+465|            top: 0;
+466|            left: 0;
+467|            width: 100%;
+468|            height: 100vh;
+469|            background: #000;
+470|            z-index: 9999;
+471|            justify-content: center;
+472|            align-items: center;
+473|            text-align: center;
+474|            padding: 20px;
+475|        }
+476|
+477|        #final-glow.show {
+478|            display: flex;
+479|            animation: glowFade 2s ease;
+480|        }
+481|
+482|        .glow-message {
+483|            font-size: clamp(28px, 5vw, 48px);
+484|            color: #ff0000;
+485|            text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #ff0000;
+486|            font-family: 'Playfair Display', serif;
+487|            font-weight: 700;
+488|            line-height: 1.6;
+489|            animation: pulse 2s infinite;
+490|        }
+491|
+492|        @keyframes fadeIn {
+493|            from {
+494|                opacity: 0;
+495|                transform: translateY(20px);
+496|            }
+497|            to {
+498|                opacity: 1;
+499|                transform: translateY(0);
+500|            }
+501|        }
+502|
+503|        @keyframes glowFade {
+504|            from {
+505|                opacity: 0;
+506|            }
+507|            to {
+508|                opacity: 1;
+509|            }
+510|        }
+511|
+512|        @keyframes pulse {
+513|            0%, 100% {
+514|                text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #ff0000;
+515|            }
+516|            50% {
+517|                text-shadow: 0 0 30px #ff0000, 0 0 60px #ff0000, 0 0 90px #ff0000;
+518|            }
+519|        }
+520|
+521|        /* Music Control */
+522|        .music-control {
+523|            position: fixed;
+524|            bottom: 30px;
+525|            right: 30px;
+526|            background: #ff0000;
+527|            color: #fff;
+528|            width: 60px;
+529|            height: 60px;
+530|            border-radius: 50%;
+531|            border: none;
+532|            cursor: pointer;
+533|            font-size: 24px;
+534|            box-shadow: 0 5px 20px rgba(255,0,0,0.5);
+535|            transition: all 0.3s ease;
+536|            z-index: 1000;
+537|            display: flex;
+538|            align-items: center;
+539|            justify-content: center;
+540|        }
+541|
+542|        .music-control:hover {
+543|            transform: scale(1.1);
+544|            box-shadow: 0 8px 30px rgba(255,0,0,0.7);
+545|        }
+546|
+547|        /* Responsive */
+548|        @media (max-width: 768px) {
+549|            .flipbook-container {
+550|                padding: 30px 20px;
+551|            }
+552|
+553|            .letter-content {
+554|                padding: 30px 20px;
+555|            }
+556|
+557|            .childhood-photo {
+558|                width: 100%;
+559|                max-width: 350px;
+560|            }
+561|
+562|            .story-item img {
+563|                height: 250px;
+564|            }
+565|        }
+566|    </style>
+567|</head>
+568|<body>
+569|
+570|    <!-- Background Music -->
+571|    <audio id="bgMusic" loop>
+572|        <source src="thousandyears.mp3" type="audio/mpeg">
+573|    </audio>
+574|
+575|    <!-- Music Control Button -->
+576|    <button class="music-control" id="musicToggle" onclick="toggleMusic()">🔊</button>
+577|
+578|    <!-- Hero Section -->
+579|    <section id="hero" class="section visible">
+580|        <h1>9 Years of Friendship</h1>
+581|        <button class="btn" onclick="startJourney()">Start</button>
+582|    </section>
+583|
+584|    <!-- Story Section -->
+585|    <section id="story" class="section">
+586|        <h2>Our Story</h2>
+587|        <div class="story-grid">
+588|            <div class="story-item">
+589|                <img src="images/image1.png" alt="Story 1">
+590|                <div class="story-caption">Where It All Began</div>
+591|            </div>
+592|            <div class="story-item">
+593|                <img src="images/image2.png" alt="Story 2">
+594|                <div class="story-caption">First Lunch Together</div>
+595|            </div>
+596|            <div class="story-item">
+597|                <img src="images/image3.png" alt="Story 3">
+598|                <div class="story-caption">Panipuri Adventures</div>
+599|            </div>
+600|            <div class="story-item">
+601|                <img src="images/image4.png" alt="Story 4">
+602|                <div class="story-caption">Drama Talks</div>
+603|            </div>
+604|            <div class="story-item">
+605|                <img src="images/image5.png" alt="Story 5">
+606|                <div class="story-caption">Sharing Dreams</div>
+607|            </div>
+608|            <div class="story-item">
+609|                <img src="images/image6.png" alt="Story 6">
+610|                <div class="story-caption">Late Night Conversations</div>
+611|            </div>
+612|            <div class="story-item">
+613|                <img src="images/image7.png" alt="Story 7">
+614|                <div class="story-caption">Supporting Each Other</div>
+615|            </div>
+616|            <div class="story-item">
+617|                <img src="images/image8.png" alt="Story 8">
+618|                <div class="story-caption">Creating Memories</div>
+619|            </div>
+620|            <div class="story-item">
+621|                <img src="images/image9.png" alt="Story 9">
+622|                <div class="story-caption">Growing Together</div>
+623|            </div>
+624|            <div class="story-item">
+625|                <img src="images/image10.png" alt="Story 10">
+626|                <div class="story-caption">Forever Friends</div>
+627|            </div>
+628|        </div>
+629|    </section>
+630|
+631|    <!-- Flipbook Section -->
+632|    <section id="flipbook" class="section">
+633|        <h2>Memory Diary</h2>
+634|        <div class="flipbook-container">
+635|            <div class="flipbook-page active" data-page="1">
+636|                <h3>🥟 Panipuri Memory</h3>
+637|                <p>Remember those countless panipuri sessions? Each bite was special because we were together. Those small street-side moments created some of our biggest memories. The laughter, the competition of who could eat more, the spicy tears... everything was perfect because it was with you.</p>
+638|            </div>
+639|            <div class="flipbook-page" data-page="2">
+640|                <h3>🍽️ Lunch Moments</h3>
+641|                <p>Every lunch break became an adventure with you. It wasn't just about the food, it was about the conversations, the silly jokes, and the comfort of having someone who truly gets you. Those simple meals turned into cherished moments I'll never forget.</p>
+642|            </div>
+643|            <div class="flipbook-page" data-page="3">
+644|                <h3>🎭 Drama Talks</h3>
+645|                <p>Our endless drama discussions... you always listened with such interest. Whether it was about our favorite characters or analyzing every plot twist, you made it so much fun. You never judged my obsessions, you embraced them and made them our shared joy.</p>
+646|            </div>
+647|            <div class="flipbook-page" data-page="4">
+648|                <h3>❤️ Support & Listening</h3>
+649|                <p>You have this incredible gift of truly listening. Not just hearing words, but understanding feelings. In my lowest moments, you were there. In my confusion, you brought clarity. Your presence alone has been the greatest support I could ask for.</p>
+650|            </div>
+651|            <div class="flipbook-page" data-page="5">
+652|                <h3>💫 Final Note</h3>
+653|                <p>These pages can't capture everything, but I hope you feel how much these moments meant to me. Every small memory with you has been a treasure. Thank you for being the friend who makes ordinary days extraordinary. 🖤❤️</p>
+654|            </div>
+655|            <div class="flipbook-nav">
+656|                <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+657|                <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+658|            </div>
+659|        </div>
+660|    </section>
+661|
+662|    <!-- Childhood Section -->
+663|    <section id="childhood" class="section">
+664|        <h2>Who You Are</h2>
+665|        <div class="childhood-intro">
+666|            <p>Beyond our friendship, I see the beautiful person you've always been. These childhood photos remind me that your kindness, your warmth, and your genuine heart were always there. You've grown into someone truly special, but that spark... that's been in you all along. You are not just my friend, you are someone I deeply admire and cherish. 🖤❤️</p>
+667|        </div>
+668|        <div class="childhood-photos">
+669|            <div class="childhood-photo">
+670|                <img src="images/child1.jpg" alt="Childhood 1">
+671|            </div>
+672|            <div class="childhood-photo">
+673|                <img src="images/child2.jpg" alt="Childhood 2">
+674|            </div>
+675|        </div>
+676|    </section>
+677|
+678|    <!-- Dreams Section -->
+679|    <section id="dreams" class="section">
+680|        <h2>Your Dreams</h2>
+681|        <div class="dreams-content">
+682|            <p>I know you have big dreams, and I want you to know something important...</p>
+683|            <p class="dreams-highlight">I believe in you completely.</p>
+684|            <p>Every goal you chase, every ambition you hold, every dream you dare to imagine - they are all within your reach. You have the strength, the heart, and the determination to achieve everything you want.</p>
+685|            <p>Never doubt yourself. I will always be here, cheering for you, supporting you, and celebrating every milestone with you.</p>
+686|            <p class="dreams-highlight">Your dreams matter. You matter. ❤️</p>
+687|        </div>
+688|    </section>
+689|
+690|    <!-- Quiz Section -->
+691|    <section id="quiz" class="section">
+692|        <h2>Fun Quiz</h2>
+693|        <div class="quiz-container">
+694|            <div class="quiz-question">
+695|                <h3>What do we enjoy doing together?</h3>
+696|                <div class="quiz-answer">👉 Talking & laughing ❤️</div>
+697|            </div>
+698|            <div class="quiz-question">
+699|                <h3>What is our best memory?</h3>
+700|                <div class="quiz-answer">👉 Spending time together ❤️</div>
+701|            </div>
+702|            <div class="quiz-question">
+703|                <h3>What makes our friendship special?</h3>
+704|                <div class="quiz-answer">👉 Understanding ❤️</div>
+705|            </div>
+706|            <div class="quiz-question">
+707|                <h3>What word describes us best?</h3>
+708|                <div class="quiz-answer">👉 Strong ❤️</div>
+709|            </div>
+710|            <div class="quiz-question">
+711|                <h3>What makes you smile?</h3>
+712|                <div class="quiz-answer">👉 Our memories ❤️</div>
+713|            </div>
+714|        </div>
+715|    </section>
+716|
+717|    <!-- Random Message Section -->
+718|    <section id="random-message" class="section">
+719|        <h2>Random Messages</h2>
+720|        <div class="message-box">
+721|            <p class="message-text" id="randomMsg">Click below to see a message ❤️</p>
+722|        </div>
+723|        <button class="btn" onclick="showRandomMessage()">Show Random Message</button>
+724|    </section>
+725|
+726|    <!-- Apology Letter Section -->
+727|    <section id="apology" class="section letter-section">
+728|        <h2>My Apology</h2>
+729|        <div class="letter-content">
+730|            <p>My dear best friend,</p>
+731|            <p>I want to say this honestly from my heart… I am truly sorry.</p>
+732|            <p>There were moments when I should have been there more, times when I should have spoken earlier, and things I should have made more special for you. I didn't fully realize their importance at that time, but now I understand.</p>
+733|            <p>Sometimes life becomes busy, and without noticing, we start missing the small moments that actually matter the most. For those missed moments, I am really sorry.</p>
+734|            <p>Even when I was silent or not fully present, you were never far from my thoughts.</p>
+735|            <p>You have always been someone who listens, understands, and never judges. You gave me your time and patience so easily, and I know I wasn't always able to give the same back at the right time.</p>
+736|            <p>But one thing I want you to know clearly… you have always mattered to me.</p>
+737|            <p>Our friendship means a lot to me, even if I don't always express it perfectly.</p>
+738|            <p>I will try to be better, not just in words, but in actions.</p>
+739|            <p class="letter-signature">With a sincere heart,<br>Your best friend 🖤❤️</p>
+740|        </div>
+741|    </section>
+742|
+743|    <!-- Birthday Letter Section -->
+744|    <section id="birthday" class="section letter-section">
+745|        <h2>🎂 Happy Birthday</h2>
+746|        <div class="letter-content">
+747|            <p>My dear best friend,</p>
+748|            <p>First, I want to say I am truly sorry that I couldn't celebrate your birthday the way you deserved. I couldn't be there or wish you at the right time, and that makes me feel a little sad.</p>
+749|            <p>Even though I wasn't there, you were always in my thoughts.</p>
+750|            <p>You are not just a friend to me. You are someone who has been part of my memories, my laughter, and so many simple moments that became special because of you.</p>
+751|            <p>There are many people we meet in life, but only a few become truly important. You are one of those rare people for me.</p>
+752|            <p>So even if this wish is a little late, I want to say it clearly…</p>
+753|            <p><strong>Happy Birthday.</strong></p>
+754|            <p>I hope this year brings you happiness, peace, and success. I hope your dreams slowly become real and your life is filled with beautiful moments.</p>
+755|            <p>Thank you for being someone who listens, understands, and supports without judging.</p>
+756|            <p>And please remember…</p>
+757|            <p>You are appreciated.<br>You are valued.<br>And you mean a lot to me.</p>
+758|            <p>Once again,</p>
+759|            <p><strong>Happy Birthday.</strong></p>
+760|            <p class="letter-signature">With all my heart,<br>Your best friend 🖤❤️</p>
+761|        </div>
+762|    </section>
+763|
+764|    <!-- Promise Section -->
+765|    <section id="promise" class="section">
+766|        <h2>My Promise</h2>
+767|        <div class="promise-content">
+768|            <p>I want you to know one thing very clearly…</p>
+769|            <br>
+770|            <p>No matter what happens in your life, I will always be there for you.</p>
+771|            <br>
+772|            <p>In your happy moments, I will smile with you.<br>
+773|            In your sad moments, I will stand beside you.</p>
+774|            <br>
+775|            <p>Not just for some time, but always.</p>
+776|            <br>
+777|            <p>I don't just want to be part of your memories,<br>
+778|            I want to be part of your life in every phase.</p>
+779|            <br>
+780|            <p>I want to travel with you, explore the world with you,<br>
+781|            and create moments that we will never forget.</p>
+782|            <br>
+783|            <p>No matter where life takes us,<br>
+784|            I still want to walk that journey with you.</p>
+785|            <br>
+786|            <p>Because for me, this friendship is not temporary…</p>
+787|            <br>
+788|            <p><b>It is something I want to keep forever. 🖤❤️</b></p>
+789|        </div>
+790|    </section>
+791|
+792|    <!-- Final Question Section -->
+793|    <section id="final-question" class="section">
+794|        <h2>One Last Thing...</h2>
+795|        <p class="question-text">Will you stay my best friend forever?</p>
+796|        <button class="yes-btn" onclick="showFinalGlow()">YES ❤️</button>
+797|    </section>
+798|
+799|    <!-- Final Glow Section -->
+800|    <div id="final-glow">
+801|        <div class="glow-message">
+802|            9 Years of Friendship<br>
+803|            And Forever More to Go<br>
+804|            You Mean Everything to Me<br>
+805|            🖤❤️
+806|        </div>
+807|    </div>
+808|
+809|    <script>
+810|        // Scroll Animation
+811|        const sections = document.querySelectorAll('.section');
+812|        
+813|        const observerOptions = {
+814|            threshold: 0.2,
+815|            rootMargin: '0px 0px -100px 0px'
+816|        };
+817|
+818|        const observer = new IntersectionObserver(function(entries) {
+819|            entries.forEach(entry => {
+820|                if (entry.isIntersecting) {
+821|                    entry.target.classList.add('visible');
+822|                }
+823|            });
+824|        }, observerOptions);
+825|
+826|        sections.forEach(section => {
+827|            observer.observe(section);
+828|        });
+829|
+830|        // Start Journey
+831|        function startJourney() {
+832|            document.getElementById('story').scrollIntoView({ behavior: 'smooth' });
+833|            const music = document.getElementById('bgMusic');
+834|            music.play().catch(e => console.log('Autoplay prevented'));
+835|        }
+836|
+837|        // Music Toggle
+838|        function toggleMusic() {
+839|            const music = document.getElementById('bgMusic');
+840|            const btn = document.getElementById('musicToggle');
+841|            if (music.paused) {
+842|                music.play();
+843|                btn.textContent = '🔊';
+844|            } else {
+845|                music.pause();
+846|                btn.textContent = '🔇';
+847|            }
+848|        }
+849|
+850|        // Flipbook Navigation
+851|        let currentPage = 1;
+852|        const totalPages = 5;
+853|
+854|        function changePage(direction) {
+855|            const pages = document.querySelectorAll('.flipbook-page');
+856|            currentPage += direction;
+857|
+858|            if (currentPage < 1) currentPage = 1;
+859|            if (currentPage > totalPages) currentPage = totalPages;
+860|
+861|            pages.forEach(page => page.classList.remove('active'));
+862|            document.querySelector(`[data-page="${currentPage}"]`).classList.add('active');
+863|
+864|            document.getElementById('prevBtn').disabled = currentPage === 1;
+865|            document.getElementById('nextBtn').disabled = currentPage === totalPages;
+866|        }
+867|
+868|        // Initialize flipbook buttons
+869|        document.getElementById('prevBtn').disabled = true;
+870|
+871|        // Random Messages
+872|        const messages = [
+873|            "You always listen to me with so much patience ❤️",
+874|            "You believe in me even when I doubt myself ❤️",
+875|            "Your friendship is one of my greatest treasures ❤️",
+876|            "You make ordinary moments special ❤️",
+877|            "I am grateful for every moment we share ❤️",
+878|            "You understand me like no one else does ❤️",
+879|            "Your support means the world to me ❤️",
+880|            "With you, I can be my true self ❤️"
+881|        ];
+882|
+883|        function showRandomMessage() {
+884|            const randomIndex = Math.floor(Math.random() * messages.length);
+885|            document.getElementById('randomMsg').textContent = messages[randomIndex];
+886|        }
+887|
+888|        // Final Glow
+889|        function showFinalGlow() {
+890|            document.getElementById('final-glow').classList.add('show');
+891|        }
+892|
+893|        // Auto-play music attempt on first interaction
+894|        document.addEventListener('click', function initMusic() {
+895|            const music = document.getElementById('bgMusic');
+896|            if (music.paused) {
+897|                music.play().catch(e => console.log('Autoplay prevented'));
+898|            }
+899|            document.removeEventListener('click', initMusic);
+900|        }, { once: true });
+901|    </script>
+902|
+903|</body>
+904|</html>
+[End of file]
