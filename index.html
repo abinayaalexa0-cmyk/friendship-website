@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <title>Our Story</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Cormorant+Garamond&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
+html{scroll-behavior:smooth;}
+
 body{
 margin:0;
 background:black;
@@ -73,21 +75,51 @@ border-radius:8px;
 cursor:pointer;
 }
 
-/* LETTER PAPER */
+button:hover{
+background:black;
+color:red;
+border:1px solid red;
+}
+
+/* ✨ VINTAGE LETTER PAPER */
 .letter-paper{
-background:#f5e6c8;
-padding:40px;
-border-radius:8px;
-max-width:700px;
-margin:40px auto;
-box-shadow:0 0 20px rgba(0,0,0,0.6),
-inset 0 0 30px rgba(0,0,0,0.2);
-border:2px solid #d2b48c;
-font-family:'Cormorant Garamond', serif;
-color:#3b2f2f;
-line-height:1.9;
-font-size:20px;
-text-align:left;
+background: #fdf6e3;
+padding: 50px;
+border-radius: 6px;
+max-width: 700px;
+margin: 40px auto;
+
+background-image: 
+linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)),
+url("https://www.transparenttextures.com/patterns/aged-paper.png");
+
+box-shadow: 
+0 10px 25px rgba(0,0,0,0.7),
+inset 0 0 40px rgba(0,0,0,0.15);
+
+border: 1px solid #c2a87d;
+
+font-family: 'Great Vibes', cursive;
+color: #3e2f1c;
+
+line-height: 2;
+font-size: 24px;
+text-align: left;
+
+/* slight rotation for realism */
+transform: rotate(-1deg);
+}
+
+/* slight shadow overlay */
+.letter-paper::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background: radial-gradient(circle at top left, rgba(0,0,0,0.15), transparent 60%);
+pointer-events:none;
 }
 
 #randomText{color:red;}
@@ -96,24 +128,30 @@ text-align:left;
 <script>
 function startStory(){
 window.scrollTo({top:window.innerHeight,behavior:'smooth'});
-document.getElementById("music").play();
+document.getElementById("music").play().catch(()=>{});
 }
 
 let current=0;
+
 function showPage(i){
 let pages=document.querySelectorAll(".page");
 pages.forEach(p=>p.classList.remove("active"));
+if(pages[i]){
 pages[i].classList.add("active");
 }
+}
+
 function next(){
 let pages=document.querySelectorAll(".page");
 if(current<pages.length-1){current++;}
 showPage(current);
 }
+
 function prev(){
 if(current>0){current--;}
 showPage(current);
 }
+
 window.onload=function(){showPage(0);}
 
 function quiz(ans){
@@ -140,60 +178,7 @@ msgs[Math.floor(Math.random()*msgs.length)];
 
 <body>
 
-<!-- 🎵 BACKGROUND MUSIC -->
-<audio id="music" loop>
-<source src="thousandyears.mp3" type="audio/mpeg">
-</audio>
-</style>
-
-<script>
-function startStory(){
-window.scrollTo({top:window.innerHeight,behavior:'smooth'});
-document.getElementById("music").play();
-}
-
-let current=0;
-function showPage(i){
-let pages=document.querySelectorAll(".page");
-pages.forEach(p=>p.classList.remove("active"));
-pages[i].classList.add("active");
-}
-function next(){
-let pages=document.querySelectorAll(".page");
-if(current<pages.length-1){current++;}
-showPage(current);
-}
-function prev(){
-if(current>0){current--;}
-showPage(current);
-}
-window.onload=function(){showPage(0);}
-
-function quiz(ans){
-if(ans==="panipuri"){
-alert("Correct ❤️");
-}else{
-alert("Wrong 😄 but still my best friend");
-}
-}
-
-function randomMsg(){
-let msgs=[
-"You always listen to me ❤️",
-"You believe in my dreams ❤️",
-"You never judge me ❤️",
-"I am lucky to have you ❤️"
-];
-document.getElementById("randomText").innerHTML =
-msgs[Math.floor(Math.random()*msgs.length)];
-}
-</script>
-
-</head>
-
-<body>
-
-<!-- 🎵 BACKGROUND MUSIC -->
+<!-- MUSIC -->
 <audio id="music" loop>
 <source src="thousandyears.mp3" type="audio/mpeg">
 </audio>
@@ -272,14 +257,70 @@ Different, but together beautiful.
 </section>
 
 <!-- DREAMS -->
+<!-- DREAMS -->
 <section>
 <h1>Your Dreams</h1>
-<p>
-You want to make your parents proud, build your future, and achieve your dreams.
-I believe you will.
-</p>
-</section>
 
+<p style="max-width:700px; margin:auto; line-height:2; font-size:20px;">
+
+I know you have dreams that mean a lot to you.<br><br>
+
+Not just small wishes, but real goals…  
+to make your parents proud,  
+to build a strong future,  
+and to become someone you always wanted to be.<br><br>
+
+Even when things feel difficult,  
+I have always believed in you.<br><br>
+
+Because I have seen your strength,  
+your patience,  
+and the way you never give up easily.<br><br>
+
+You may not always see it in yourself,  
+but I can see it clearly.<br><br>
+
+One day, all your efforts will turn into success,  
+and you will look back and feel proud of how far you came.<br><br>
+
+And when that day comes,  
+I will be there… smiling for you. ❤️
+
+</p>
+
+</section>
+<!-- FUTURE TRAVEL LETTER -->
+<section>
+<h1>Our Future 🌍</h1>
+
+<div class="letter-paper">
+My dear best friend,
+
+Sometimes I sit quietly and think about the future, and in almost every happy thought, you are there.
+
+I imagine a day where we finally get the chance to travel together, not just for a short time, but freely, without worries. We go to the places we once talked about, the places that felt like dreams when we said their names.
+
+I can already imagine us walking through beautiful streets, laughing about small things, taking pictures, and enjoying moments without even realizing how special they are. Just like before, but in a different place, in a different time.
+
+We once talked about visiting places like Tawang, Finland, and even Japan. Right now, they may feel far away, but I believe one day, we will stand there together and remember how we once only dreamed about it.
+
+More than the place, what matters to me is that you are there.
+
+Because even the most beautiful place would not feel the same without you.
+
+I want us to spend time together again, talk without limits, laugh without reasons, and create new memories that we will carry for the rest of our lives.
+
+Maybe life is busy now, and maybe things are not easy, but I still believe in that future.
+
+A future where we travel together.  
+A future where we create more memories.  
+A future where our friendship continues just like it always has.
+
+Until that day comes, I will keep that dream safely in my heart.
+
+Your best friend 🖤❤️
+</div>
+</section>
 <!-- QUIZ -->
 <section>
 <h1>Quiz</h1>
@@ -327,24 +368,33 @@ Your best friend 🖤❤️
 <h1>Birthday</h1>
 <div class="letter-paper">
 My dear best friend,
+First, I want to say I am truly sorry that I couldn’t celebrate your birthday the way you deserved. I couldn’t be there or wish you at the right time, and that makes me feel a little sad.
 
-I want to say this honestly from my heart… I am truly sorry.
+Even though I wasn’t there, you were always in my thoughts.
 
-There were moments when I should have been there more, times when I should have spoken earlier, and things I should have made more special for you. I didn’t fully realize their importance at that time, but now I understand.
+You are not just a friend to me. You are someone who has been part of my memories, my laughter, and so many simple moments that became special because of you.
 
-Sometimes life becomes busy, and without noticing, we start missing the small moments that actually matter the most. For those missed moments, I am really sorry.
+There are many people we meet in life, but only a few become truly important. You are one of those rare people for me.
 
-Even when I was silent or not fully present, you were never far from my thoughts.
+So even if this wish is a little late, I want to say it clearly…
 
-You have always been someone who listens, understands, and never judges. You gave me your time and patience so easily, and I know I wasn’t always able to give the same back at the right time.
+Happy Birthday.
 
-But one thing I want you to know clearly… you have always mattered to me.
+I hope this year brings you happiness, peace, and success. I hope your dreams slowly become real and your life is filled with beautiful moments.
 
-Our friendship means a lot to me, even if I don’t always express it perfectly.
+Thank you for being someone who listens, understands, and supports without judging.
 
-I will try to be better, not just in words, but in actions.
+And please remember…
 
-With a sincere heart,
+You are appreciated.
+You are valued.
+And you mean a lot to me.
+
+Once again,
+
+Happy Birthday.
+
+With all my heart,
 Your best friend 🖤❤️
 </div>
 </section>
